@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DatatableApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect('/dashboard');
+});
 
-// Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::get('/', function () {
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
         return view('admin-layouts.admin');
+    })->name('dashboard');
+
+    Route::prefix('users')->group(function () {
+        Route::get('/', function() {
+            return view('admin.users.index');
+        })
+        ->name('users.index');
     });
 
-    // Route::resource('/roles', 'RoleController');
-// });
+    // internel call
+    Route::prefix('api')->group(function () {
+        Route::get('/doctors/datatable', [DatatableApiController::class, 'doctors'])
+        ->name('api.doctors.datatable');
+        Route::get('/users/datatable', [DatatableApiController::class, 'users'])
+        ->name('api.users.datatable');
+    });
+});
+
+require __DIR__ . '/auth.php';

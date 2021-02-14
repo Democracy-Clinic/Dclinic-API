@@ -4,4 +4,4 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<title>Admin Panel Peace Clinic (Alpha v1.0.0)</title>
+<title>Dclinic Alpha v1.0.0</title>

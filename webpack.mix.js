@@ -11,45 +11,47 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/script/app.js', 'public/js')
+// mix.js('resources/script/app.js', 'public/js')
+// .vue();
+// mix.postCss('resources/css/app.css', 'public/css', [
+//     require('postcss-import'),
+//     require('tailwindcss'),
+//     require('autoprefixer'),
+// ]);
+
+mix.js('resources/script/app.js', 'public/js')
   .vue();
-mix.sass('resources/assets/sass/app.scss', 'public/css');
-
-// mix.js('resources/js/app.js', 'public/js')
-//   .vue();
-
+mix.sass('resources/sass/app.scss', 'public/css');
 
 mix.scripts([
-  'resources/assets/js/jquery.min.js',
-  'resources/assets/js/bootstrap-3/bootstrap.bundle.min.js',
-  'resources/assets/js/theme/clean-blog.min.js',
-  'resources/assets/js/plyr.min.js',
+  'resources/js/jquery.min.js',
+  'resources/js/bootstrap-3/bootstrap.bundle.min.js',
+  'resources/js/theme/clean-blog.min.js',
+  'resources/js/plyr.min.js',
 ], 'public/js/main-page.js');
 
 mix.styles([
-  'resources/assets/css/bootstrap-3/bootstrap.css',
-  'resources/assets/css/font-awesome/font-awesome.min.css',
-  'resources/assets/css/theme/clean-blog.min.css',
-  'resources/assets/css/plyr.css',
+  'resources/css/bootstrap-3/bootstrap.css',
+  'resources/css/font-awesome/font-awesome.min.css',
+  'resources/css/theme/clean-blog.min.css',
+  'resources/css/plyr.css',
 ], 'public/css/main-page.css');
 
 mix.scripts([
-  'resources/assets/vendor/jquery/jquery.min.js',
-  'resources/assets/vendor/bootstrap/js/bootstrap.min.js',
-  'resources/assets/vendor/metisMenu/metisMenu.min.js',
-  'resources/assets/vendor/raphael/raphael.min.js',
-  'resources/assets/vendor/datatables/js/jquery.dataTables.min.js',
-  'resources/assets/vendor/datatables-plugins/dataTables.bootstrap.min.js',
-  'resources/assets/vendor/datatables-responsive/dataTables.responsive.js',
-  'resources/assets/dist/js/sb-admin-2.js',
+  'resources/vendor/jquery/jquery.min.js',
+  'resources/vendor/bootstrap/js/bootstrap.min.js',
+  'resources/vendor/metisMenu/metisMenu.min.js',
+  'resources/vendor/raphael/raphael.min.js',
+  'resources/vendor/datatables/js/jquery.dataTables.min.js',
+  'resources/vendor/datatables-plugins/dataTables.bootstrap.min.js',
+  'resources/vendor/datatables-responsive/dataTables.responsive.js',
+  'resources/dist/js/sb-admin-2.js',
 ], 'public/js/admin.js');
 
 mix.styles([
-  'resources/assets/vendor/bootstrap/css/bootstrap.min.css',
-  'resources/assets/vendor/metisMenu/metisMenu.min.css',
-  'resources/assets/dist/css/sb-admin-2.css',
-  'resources/assets/vendor/font-awesome/css/font-awesome.min.css',
-  'resources/assets/vendor/datatables-responsive/dataTables.responsive.css',
+  'resources/vendor/bootstrap/css/bootstrap.min.css',
+  'resources/vendor/metisMenu/metisMenu.min.css',
+  'resources/dist/css/sb-admin-2.css',
+  'resources/vendor/font-awesome/css/font-awesome.min.css',
+  'resources/vendor/datatables-responsive/dataTables.responsive.css',
 ], 'public/css/admin.css');
-
-// mix.copy('resources/assets/talvbansal/media-manager/fonts/', 'public/fonts/');
