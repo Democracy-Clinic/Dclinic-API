@@ -54,10 +54,22 @@
                     <!-- /input-group -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-user fa-fw"></i> User<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-user fa-fw"></i> Users<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href={{ route('users.index') }}>User List</a>
+                            <a href={{ route('users.index') }}>List</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-user-md fa-fw"></i> Doctors<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href={{ route('doctors.index') }}>List</a>
+                        </li>
+                        <li>
+                            <a href={{ route('doctors.create') }}>Add</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->

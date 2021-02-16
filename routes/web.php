@@ -24,12 +24,10 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 
 
-    Route::prefix('users')->group(function () {
-        Route::get('/', function() {
-            return view('admin.users.index');
-        })
-        ->name('users.index');
-    });
+    Route::get('/users', function() {
+        return view('admin.users.index');
+    })
+    ->name('users.index');
 
     Route::prefix('/dashboard')->group(function () {
         Route::get('/', function () {

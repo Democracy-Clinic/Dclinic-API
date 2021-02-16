@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Specialization;
+use App\Models\Town;
 
 class DoctorController extends Controller
 {
@@ -13,7 +15,19 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.doctors.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $specializations = Specialization::pluck('title_myan', 'id');
+        $towns = Town::pluck('Town_Name_Eng', 'Town_Pcode');
+        return view('admin.doctors.create', compact('specializations', 'towns'));
     }
 
     /**
@@ -24,7 +38,7 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -34,6 +48,17 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         //
     }
