@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatatableApiController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\AmbulanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +22,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin-layouts.admin');
-    })->name('dashboard');
+
 
     Route::prefix('users')->group(function () {
         Route::get('/', function() {
@@ -29,6 +30,18 @@ Route::middleware(['auth'])->group(function () {
         })
         ->name('users.index');
     });
+
+    Route::prefix('/dashboard')->group(function () {
+        Route::get('/', function () {
+            return view('admin-layouts.admin');
+        })->name('dashboard');
+
+        Route::resource('doctors', DoctorController::class);
+        Route::resource('clinics', ClinicController::class);
+        Route::resource('ambulances', AmbulanceController::class);
+    });
+
+
 
     // internel call
     Route::prefix('api')->group(function () {

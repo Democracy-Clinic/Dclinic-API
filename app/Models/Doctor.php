@@ -5,10 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Yajra\Datatables\Datatables;
+use App\Models\Accounts;
+use App\Models\Schedule;
+use App\Models\Specialization;
 
 class Doctor extends Model
 {
     use HasFactory;
+
+    public function accounts()
+    {
+        return $this->morphMany(Account::class, 'accountable');
+    }
+
+    public function schedules()
+    {
+        return $this->morphMany(Schedule::class, 'schedulable');
+    }
+
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class);
+    }
 
     public function scopeGetDatatableQuery($query, $request)
     {
