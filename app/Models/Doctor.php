@@ -13,6 +13,8 @@ class Doctor extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function accounts()
     {
         return $this->morphMany(Account::class, 'accountable');
@@ -33,13 +35,13 @@ class Doctor extends Model
         return Datatables::of($query)
         // ->editColumn('title', '<a href="{{route("posts.show", $id)}}"><p class="text-success"> {{ $title }} </p>')
         ->addColumn("name", function ($query) {
-            $data = '<p class="text-info">' . $query->user->name .'</p>';
+            $data = '<p class="text-info">' . $query->name .'</p>';
             return $data;
         })
-        // ->addColumn("created_at", function ($query) {
-        //     $data = '<span class="badge progress-bar-success">' . $query->created_at->diffForHumans() .'</span>';
-        //     return $data;
-        // })
+        ->addColumn("created_at", function ($query) {
+            $data = '<span class="badge progress-bar-success">' . $query->created_at->diffForHumans() .'</span>';
+            return $data;
+        })
         // ->addColumn("readable_time", function ($query) {
         //     $data = '<span class="badge progress-bar-danger">' . $query->readable_time .'</span>';
         //     return $data;
@@ -56,7 +58,7 @@ class Doctor extends Model
         // </form>';
         //     return $data;
         // })
-        ->rawColumns(['name'])
+        ->rawColumns(['name', 'created_at'])
         ->toJson();
     }
 }

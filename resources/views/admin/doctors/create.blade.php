@@ -117,8 +117,8 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="form-group">
-                    <label for="specializations">Specializations</label>
-                    <select name="specializations" class="form-control myclass">
+                    <label for="specialization_id">Choose Specialization</label>
+                    <select name="specialization_id" class="form-control myclass">
                         @foreach( $specializations as $key=>$value)
                         <option value="{{$key}}">{{$value}}</option>
                         @endforeach
@@ -127,8 +127,8 @@
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
-                    <label for="towns">Towns</label>
-                    <select name="towns" class="form-control myclass">
+                    <label for="town_pcode">Choose Town</label>
+                    <select name="town_pcode" class="form-control myclass">
                         @foreach( $towns as $key=>$value)
                         <option value="{{$key}}">{{$value}}</option>
                         @endforeach

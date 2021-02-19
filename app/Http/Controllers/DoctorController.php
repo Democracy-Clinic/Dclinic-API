@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\DoctorRequest;
 use App\Models\Specialization;
 use App\Models\Town;
+use App\Models\Doctor;
 
 class DoctorController extends Controller
 {
@@ -36,9 +39,28 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DoctorRequest $request)
     {
-        dd($request);
+        flash('Doctor information is added !')->success()->important();
+        $doctor = Doctor::create([
+            'name' => $request->name,
+            'name_myan' => $request->name_myan,
+            'phone' => $request->phone,
+            'viber' => $request->viber,
+            'facebook_url' => $request->facebook_url,
+            'from_date' => $request->from_date,
+            'to_date' => $request->to_date,
+            'lat' => $request->lat,
+            'lng' => $request->lng,
+            'address' => $request->address,
+            'note' => $request->note,
+            'fee_status' => $request->fee_status,
+            'status' => $request->status,
+            'specialization_id' => $request->specialization_id,
+            'town_pcode' => $request->town_pcode,
+        ]);
+
+        return Redirect::route('doctors.index');
     }
 
     /**

@@ -16,8 +16,6 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Roles</th>
                             <th>Create at</th>
                         </tr>
                     </thead>
@@ -43,13 +41,10 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            filter: false,
-            ajax: '{!! route('api.users.datatable') !!}',
+            ajax: '{!! route('api.doctors.datatable') !!}',
             columns: [
-            { data: 'name', name: 'name' }, 
-            { data: 'email', name: 'email' }, 
-            { data: 'roles', name: 'roles' }, 
-            { data: 'created_at', name: 'created_at' }, 
+                { data: 'name', name: 'name' }, 
+                { data: 'created_at', name: 'created_at' }, 
             ]
         });
     });
