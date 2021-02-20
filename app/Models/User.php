@@ -47,8 +47,7 @@ class User extends Authenticatable
         return Datatables::of($query)
         // ->editColumn('title', '<a href="{{route("posts.show", $id)}}"><p class="text-success"> {{ $title }} </p>')
         ->addColumn("name", function ($query) {
-            $data = '<p class="text-info">' . $query->name .'</p>';
-            return $data;
+            return $query->name;
         })
         ->addColumn("email", function ($query) {
             $data = '<p class="text-danger">' . $query->email .'</p>';

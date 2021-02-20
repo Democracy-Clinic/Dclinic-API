@@ -17,6 +17,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Create at</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +46,7 @@
             columns: [
                 { data: 'name', name: 'name' }, 
                 { data: 'created_at', name: 'created_at' }, 
+                { data: 'edit', name: 'edit' }, 
             ]
         });
     });

@@ -11,26 +11,27 @@
 @section('content')
 <div class="row">
     <h1 class="page-header">Add Doctor Info</h1>
-    <form action="{{route('doctors.store')}}" id="form-data" method="POST">
+    <form action="{{route('doctors.update', $doctor->id)}}" id="form-data" method="POST">
+        @method('PATCH')
         @csrf
         <div class="row">
 
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="name">*Name</label>
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name" value="{{$doctor->name}}">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="name_myan">*Name (Myanmar)</label>
-                    <input type="text" class="form-control" name="name_myan">
+                    <input type="text" class="form-control" name="name_myan" value="{{$doctor->name_myan}}">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="facebook_url">Facebook</label>
-                    <input type="text" class="form-control" name="facebook_url">
+                    <input type="text" class="form-control" name="facebook_url" value="{{$doctor->facebook_url}}">
                 </div>
             </div>
         </div>
@@ -38,19 +39,19 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="phone">*Phone</label>
-                    <input type="text" class="form-control" name="phone">
+                    <input type="text" class="form-control" name="phone" value="{{$doctor->phone}}">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="address">*Address</label>
-                    <input type="text" class="form-control" name="address">
+                    <input type="text" class="form-control" name="address" value="{{$doctor->address}}">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="viber">Viber</label>
-                    <input type="text" class="form-control" name="viber">
+                    <input type="text" class="form-control" name="viber" value="{{$doctor->viber}}">
                 </div>
             </div>
         </div>
@@ -58,13 +59,13 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="lat">Latitude</label>
-                    <input type="text" class="form-control" name="lat">
+                    <input type="text" class="form-control" name="lat" value="{{$doctor->lat}}">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="lng">Longitude</label>
-                    <input type="text" class="form-control" name="lng">
+                    <input type="text" class="form-control" name="lng" value="{{$doctor->lng}}">
                 </div>
             </div>
             <div class="col-lg-4">
@@ -88,13 +89,13 @@
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="from_date">From Date</label>
-                    <input type="date" class="form-control" name="from_date">
+                    <input type="date" class="form-control" name="from_date" value="{{$doctor->from_date}}">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="form-group">
                     <label for="to_date">To Date</label>
-                    <input type="date" class="form-control" name="to_date">
+                    <input type="date" class="form-control" name="to_date" value="{{$doctor->to_date}}">
                 </div>
             </div>
             <div class="col-lg-4">
@@ -102,7 +103,11 @@
                     <label for="fee_status">Fee Status</label>
                     <select name="fee_status" class="form-control myclass">
                         @foreach( $fee_status as $key=>$value)
-                            <option value="{{$key}}">{{$value}}</option>
+                            @if($key == $doctor->fee_status)
+                                <option value="{{$key}}" selected>{{$value}}</option>
+                            @else
+                                <option value="{{$key}}">{{$value}}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -114,7 +119,11 @@
                     <label for="specialization_id">Choose Specialization</label>
                     <select name="specialization_id" class="form-control myclass">
                         @foreach( $specializations as $key=>$value)
-                        <option value="{{$key}}">{{$value}}</option>
+                            @if($key == $doctor->specialization_id)
+                                <option value="{{$key}}" selected>{{$value}}</option>
+                            @else
+                                <option value="{{$key}}">{{$value}}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -124,7 +133,11 @@
                     <label for="town_pcode">Choose Town</label>
                     <select name="town_pcode" class="form-control myclass">
                         @foreach( $towns as $key=>$value)
-                        <option value="{{$key}}">{{$value}}</option>
+                            @if($key == $doctor->town_pcode)
+                                <option value="{{$key}}" selected>{{$value}}</option>
+                            @else
+                                <option value="{{$key}}">{{$value}}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -133,7 +146,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-group">
-                    <textarea id="mymce" name="note"></textarea>
+                    <textarea id="mymce" name="note">{{$doctor->note}}</textarea>
                 </div>
             </div>
             <div class="col-lg-12">

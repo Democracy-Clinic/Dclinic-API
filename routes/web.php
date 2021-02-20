@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatatableApiController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorApiController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\AmbulanceController;
 
@@ -48,6 +49,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/users/datatable', [DatatableApiController::class, 'users'])
         ->name('api.users.datatable');
     });
+});
+
+Route::prefix('api')->group(function () {
+    Route::resource('/v1/doctors', DoctorApiController::class);
 });
 
 require __DIR__ . '/auth.php';
