@@ -20,8 +20,8 @@ class CreateSchedulesTable extends Migration
             $table->date('from_date')->nullable();
             $table->date('to_date')->nullable();
 
-            $table->integer('schedulable_id');
-            $table->string('schedulable_type');
+            $table->integer('schedulable_id')->nullable();
+            $table->string('schedulable_type')->nullable();
 
             $table->timestamps();
         });

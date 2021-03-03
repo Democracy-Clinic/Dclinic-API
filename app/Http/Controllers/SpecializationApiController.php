@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Doctor;
+use App\Models\Specialization;
 
-class DoctorApiController extends Controller
+class SpecializationApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class DoctorApiController extends Controller
      */
     public function index()
     {
-        return Doctor::all();
+        return Specialization::all();
     }
 
     /**
@@ -34,9 +34,9 @@ class DoctorApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Doctor $doctor)
+    public function show(Specialization $specialization)
     {
-        return $doctor->load('accounts', 'schedules', 'specialization');
+        return $specialization->load('doctors');
     }
 
     /**

@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatatableApiController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorApiController;
+use App\Http\Controllers\SpecializationApiController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\AmbulanceController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('doctors', DoctorController::class);
         Route::resource('clinics', ClinicController::class);
         Route::resource('ambulances', AmbulanceController::class);
+        Route::resource('schedules', ScheduleController::class);
+        Route::resource('accounts', AccountController::class);
     });
 
 
@@ -51,8 +56,10 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-Route::prefix('api')->group(function () {
-    Route::resource('/v1/doctors', DoctorApiController::class);
+Route::prefix('api/v1')->name('api.v1.')->group(function () {
+    Route::resource('doctors', DoctorApiController::class);
+    Route::resource('specializations', SpecializationApiController::class);
+    // Route::resource('doctors.specializations', DoctorSpecializationApiController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -71,9 +71,13 @@
                         <li>
                             <a href={{ route('doctors.create') }}>Add</a>
                         </li>
+                        <li>
+                            <a href={{ route('api.v1.doctors.index') }}>API</a>
+                        </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+                
 
             </ul>
         </div>

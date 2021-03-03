@@ -18,8 +18,8 @@ class CreateAccountsTable extends Migration
             $table->enum('channel', ['BANK', 'AGENT', 'OTHER'])->default('BANK');
             $table->string('name')->nullable();
             $table->string('number')->nullable();
-            $table->integer('accountable_id');
-            $table->string('accountable_type');
+            $table->integer('accountable_id')->nullable();
+            $table->string('accountable_type')->nullable();
             $table->text('note')->nullable();
 
             $table->timestamps();

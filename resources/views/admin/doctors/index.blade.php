@@ -16,8 +16,9 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Create at</th>
+                            <th>Schedule</th>
                             <th>Edit</th>
+                            <th>Create at</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,8 +46,9 @@
             ajax: '{!! route('api.doctors.datatable') !!}',
             columns: [
                 { data: 'name', name: 'name' }, 
-                { data: 'created_at', name: 'created_at' }, 
+                { data: 'show', name: 'show' }, 
                 { data: 'edit', name: 'edit' }, 
+                { data: 'created_at', name: 'created_at' }, 
             ]
         });
     });

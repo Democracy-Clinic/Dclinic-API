@@ -74,9 +74,27 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Doctor $doctor)
     {
-        //
+        // combine creating
+        // schedule and account
+        // refactor later
+        $days = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+        ];
+        $fee_status = [
+            "FREE_OF_CHARGE" => "FOC", 
+            "CHARGE" => "အခပေး",
+            "PARTIAL_CHARGE" => "စရိတ်မျှပေး"
+        ];
+        $channels = ['BANK', 'AGENT', 'OTHER'];
+        return view('admin.doctors.show', compact('doctor', 'fee_status', 'days', 'channels'));
     }
 
     /**

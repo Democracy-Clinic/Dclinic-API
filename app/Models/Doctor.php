@@ -49,6 +49,10 @@ class Doctor extends Model
             $data = '<a href='. route("doctors.edit", $query->id) .' class="btn btn-info text-info"><span class="fa fa-edit"></span></a>';
             return $data;
         })
+        ->addColumn("show", function ($query) {
+            $data = '<a href='. route("doctors.show", $query->id) .' class="btn btn-success text-info"><span class="fa fa-user"></span></a>';
+            return $data;
+        })
         // ->addColumn("delete", function ($query) {
         //     $data = '<form action="' . route('posts.destroy', $query->id). '" method="post">'
         //     . csrf_field() .
@@ -57,7 +61,7 @@ class Doctor extends Model
         // </form>';
         //     return $data;
         // })
-        ->rawColumns(['name', 'created_at', 'edit'])
+        ->rawColumns(['name', 'created_at', 'edit', 'show'])
         ->toJson();
     }
 }

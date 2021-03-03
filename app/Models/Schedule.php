@@ -9,6 +9,8 @@ class Schedule extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function schedulable()
     {
         return $this->morphTo();
