@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatatableApiController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorApiController;
+use App\Http\Controllers\TownApiController;
 use App\Http\Controllers\SpecializationApiController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\AmbulanceController;
@@ -59,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('api/v1')->name('api.v1.')->group(function () {
     Route::resource('doctors', DoctorApiController::class);
     Route::resource('specializations', SpecializationApiController::class);
+    Route::resource('towns', TownApiController::class);
     // Route::resource('doctors.specializations', DoctorSpecializationApiController::class);
 });
 

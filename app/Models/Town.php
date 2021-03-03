@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Town extends Model
 {
     use HasFactory;
+    public function getRouteKeyName()
+    {
+        return 'Town_Pcode';
+    }
 }
